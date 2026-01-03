@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Guess SpelloPic – Picture Word Puzzle Game for Smart Kids!</title>
+    <title>Water Sort Puzzle - Color Game | Relaxing Brain Logic Sorting Challenge</title>
     <link rel="icon" type="image/png" href="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" />
     
     <!-- Tailwind CSS CDN -->
@@ -24,25 +24,30 @@
                     colors: {
                         'primary-bg': '#0A0A0A',
                         'secondary-bg': '#1a1a1a',
-                        'accent-pink': '#FF0066',
-                        'accent-yellow': '#FBD534',
-                        'accent-blue': '#00D4FF',
+                        'accent-aqua': '#00FFFF',
+                        'accent-blue': '#3498db',
                         'accent-purple': '#9D4EDD',
-                        'accent-green': '#10B981',
+                        'accent-pink': '#FF0066',
+                        'accent-green': '#2ECC71',
+                        'accent-yellow': '#FBD534',
                         'text-light': '#e5e5e5',
                         'border-dark': '#333333',
+                        'water-blue': '#1E90FF',
+                        'water-green': '#00FA9A',
+                        'water-purple': '#9370DB',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         'orbitron': ['Orbitron', 'sans-serif'],
-                        'comic': ['"Comic Neue"', 'cursive'],
+                        'puzzle': ['"Comic Neue"', 'cursive'],
                     },
                     boxShadow: {
+                        'neon-aqua': '0 0 20px rgba(0, 255, 255, 0.8)',
+                        'neon-blue': '0 0 20px rgba(52, 152, 219, 0.8)',
+                        'neon-purple': '0 0 20px rgba(157, 78, 221, 0.8)',
                         'neon-pink': '0 0 20px rgba(255, 0, 102, 0.8)',
-                        'neon-yellow': '0 0 20px rgba(251, 213, 52, 0.8)',
-                        'neon-blue': '0 0 20px rgba(0, 212, 255, 0.8)',
-                        'neon-green': '0 0 20px rgba(16, 185, 129, 0.8)',
-                        'glow': '0 0 40px rgba(251, 213, 52, 0.6)',
+                        'water-glow': '0 0 40px rgba(30, 144, 255, 0.6)',
+                        'bubble-glow': '0 0 25px rgba(0, 250, 154, 0.5)',
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s infinite',
@@ -51,8 +56,10 @@
                         'spin-slow': 'spin 8s linear infinite',
                         'wiggle': 'wiggle 1s ease-in-out infinite',
                         'slide-in': 'slide-in 0.5s ease-out',
-                        'letter-float': 'letter-float 4s ease-in-out infinite',
-                        'puzzle-spin': 'puzzle-spin 10s linear infinite',
+                        'bubble-float': 'bubble-float 10s linear infinite',
+                        'water-flow': 'water-flow 15s linear infinite',
+                        'color-change': 'color-change 5s infinite alternate',
+                        'drop-fall': 'drop-fall 4s linear infinite',
                     }
                 }
             }
@@ -79,8 +86,8 @@
             width: 100%;
             height: 5px;
             background: linear-gradient(90deg, 
-                #ff0000, #ff9900, #ffff00, #33ff00, 
-                #0099ff, #6633ff, #ff00ff, #ff0000);
+                #00FFFF, #1E90FF, #3498db, #9D4EDD, 
+                #FF0066, #FBD534, #2ECC71, #00FFFF);
             background-size: 800% 100%;
             animation: colorSlide 10s linear infinite;
             z-index: 100;
@@ -94,8 +101,8 @@
             width: 5px;
             height: 100%;
             background: linear-gradient(180deg, 
-                #ff0000, #ff9900, #ffff00, #33ff00, 
-                #0099ff, #6633ff, #ff00ff, #ff0000);
+                #00FFFF, #1E90FF, #3498db, #9D4EDD, 
+                #FF0066, #FBD534, #2ECC71, #00FFFF);
             background-size: 100% 800%;
             animation: colorSlideVertical 15s linear infinite;
             z-index: 99;
@@ -121,7 +128,7 @@
         }
         
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #FBD534, #10B981);
+            background: linear-gradient(180deg, #00FFFF, #9D4EDD);
             border-radius: 10px;
         }
         
@@ -149,7 +156,7 @@
                 transform: translateY(0px);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
             100% {
                 transform: translateY(0px);
@@ -176,24 +183,64 @@
             }
         }
         
-        @keyframes letter-float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
+        @keyframes bubble-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
             }
-            25% {
-                transform: translateY(-10px) rotate(5deg);
+            10% {
+                opacity: 0.7;
             }
-            75% {
-                transform: translateY(5px) rotate(-5deg);
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) translateX(20px);
+                opacity: 0;
             }
         }
         
-        @keyframes puzzle-spin {
+        @keyframes water-flow {
             0% {
-                transform: rotate(0deg);
+                background-position: 0 0;
             }
             100% {
-                transform: rotate(360deg);
+                background-position: 100px 100px;
+            }
+        }
+        
+        @keyframes color-change {
+            0% {
+                background-color: #00FFFF;
+            }
+            25% {
+                background-color: #FF0066;
+            }
+            50% {
+                background-color: #FBD534;
+            }
+            75% {
+                background-color: #2ECC71;
+            }
+            100% {
+                background-color: #9D4EDD;
+            }
+        }
+        
+        @keyframes drop-fall {
+            0% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1);
+                opacity: 0;
             }
         }
         
@@ -208,16 +255,20 @@
             pointer-events: none;
         }
         
-        /* Letter Animation */
-        .letter-animation {
+        /* Water Background Animation */
+        .water-background {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(30, 144, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 250, 154, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(147, 112, 219, 0.1) 0%, transparent 50%);
+            animation: water-flow 20s linear infinite;
             z-index: -1;
-            font-size: 24px;
-            font-weight: bold;
-            color: #FBD534;
+            opacity: 0.3;
         }
         
         /* Game Card Hover Effects */
@@ -250,7 +301,7 @@
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
-            scrollbar-color: #FBD534 #1a1a1a;
+            scrollbar-color: #00FFFF #1a1a1a;
         }
         
         .screenshot-gallery::-webkit-scrollbar {
@@ -263,15 +314,15 @@
         }
         
         .screenshot-gallery::-webkit-scrollbar-thumb {
-            background: linear-gradient(90deg, #FBD534, #10B981);
+            background: linear-gradient(90deg, #00FFFF, #9D4EDD);
             border-radius: 10px;
         }
         
         .screenshot-item {
             flex: 0 0 auto;
             scroll-snap-align: start;
-            width: 280px;
-            margin-right: 20px;
+            width: 180px;
+            margin-right: 15px;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -298,7 +349,7 @@
             max-width: 90%;
             max-height: 90%;
             border-radius: 10px;
-            box-shadow: 0 0 50px rgba(251, 213, 52, 0.7);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.7);
             animation: slide-in 0.5s ease-out;
         }
         
@@ -314,7 +365,7 @@
         }
         
         .close-modal:hover {
-            color: #FBD534;
+            color: #00FFFF;
             transform: rotate(90deg);
         }
         
@@ -330,7 +381,7 @@
         }
         
         .modal-nav:hover {
-            color: #FBD534;
+            color: #00FFFF;
         }
         
         .modal-prev {
@@ -348,7 +399,7 @@
             right: 30px;
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, #FBD534, #10B981);
+            background: linear-gradient(45deg, #00FFFF, #9D4EDD);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -360,7 +411,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(251, 213, 52, 0.7);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
         }
         
         .scroll-top-btn.active {
@@ -370,7 +421,7 @@
         
         .scroll-top-btn:hover {
             transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(251, 213, 52, 0.9);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.9);
         }
         
         /* Rating Stars */
@@ -379,38 +430,50 @@
             font-size: 24px;
         }
         
-        /* Alphabet Letters Animation */
-        .alphabet-letter {
+        /* Water Bubble Animation */
+        .water-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(30,144,255,0.4));
+            box-shadow: inset 0 0 20px rgba(255,255,255,0.5);
+            z-index: -1;
+        }
+        
+        /* Water Tube Animation */
+        .water-tube {
             display: inline-block;
             width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #FBD534, #FF0066);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin: 5px;
-            animation: letter-float 4s ease-in-out infinite;
-            animation-delay: calc(var(--i) * 0.2s);
+            height: 80px;
+            background: linear-gradient(to bottom, 
+                transparent 10%, 
+                rgba(30, 144, 255, 0.3) 10%, 
+                rgba(30, 144, 255, 0.6) 40%,
+                rgba(30, 144, 255, 0.8) 70%,
+                rgba(30, 144, 255, 1) 90%);
+            border-radius: 10px 10px 5px 5px;
+            border: 3px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
         }
         
-        /* Puzzle Piece Animation */
-        .puzzle-piece {
+        .water-tube::after {
+            content: '';
             position: absolute;
-            font-size: 30px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: water-flow 3s linear infinite;
+        }
+        
+        /* Color Drop Animation */
+        .color-drop {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             z-index: -1;
-            opacity: 0.3;
-        }
-        
-        /* Category Badges */
-        .category-badge {
-            transition: all 0.3s;
-        }
-        
-        .category-badge:hover {
-            transform: translateY(-5px) scale(1.05);
         }
         
         /* Download Button Animation */
@@ -435,6 +498,18 @@
             left: 100%;
         }
         
+        /* Feature Card */
+        .feature-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .side-animated-bar {
@@ -447,16 +522,15 @@
                 right: 20px;
             }
             .screenshot-item {
-                width: 250px;
+                width: 150px;
             }
             .modal-nav {
                 font-size: 30px;
                 padding: 10px;
             }
-            .alphabet-letter {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
+            .water-tube {
+                width: 30px;
+                height: 60px;
             }
         }
     </style>
@@ -471,11 +545,14 @@
     <!-- Particle Background -->
     <div class="particles" id="particles-js"></div>
     
-    <!-- Letter Animation -->
-    <div id="letterAnimation"></div>
+    <!-- Water Background Animation -->
+    <div class="water-background"></div>
     
-    <!-- Puzzle Pieces Animation -->
-    <div id="puzzleAnimation"></div>
+    <!-- Bubble Animation -->
+    <div id="bubbleAnimation"></div>
+    
+    <!-- Color Drop Animation -->
+    <div id="dropAnimation"></div>
     
     <!-- Modal for Full Screen Screenshots -->
     <div id="screenshotModal" class="modal-overlay">
@@ -495,21 +572,21 @@
     </div>
 
     <!-- Header / Navigation Bar -->
-    <header class="sticky top-0 z-50 bg-secondary-bg/90 backdrop-blur-md shadow-2xl shadow-black/70 border-b-2 border-accent-yellow">
+    <header class="sticky top-0 z-50 bg-secondary-bg/90 backdrop-blur-md shadow-2xl shadow-black/70 border-b-2 border-accent-aqua">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo/Title -->
             <div class="flex items-center space-x-3" data-aos="fade-right" data-aos-duration="1000">
                 <div class="relative">
                     <a href="https://nadeemgamingstudio.github.io">
-                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" 
-                             class="h-10 w-10 rounded-xl border-2 border-accent-yellow p-0.5 animate-spin-slow"
-                             onerror="this.src='https://placehold.co/40x40/1a1a1a/f06?text=NGS'">
+                        <img src="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" alt="Nadeem Studio Logo" 
+                             class="h-10 w-10 rounded-xl border-2 border-accent-aqua p-0.5 animate-spin-slow"
+                             onerror="this.src='https://placehold.co/40x40/1a1a1a/00ffff?text=NGS'">
                     </a>
                     <div class="absolute -top-1 -right-1 h-4 w-4 bg-accent-pink rounded-full animate-pulse"></div>
                 </div>
                 <div>
-                    <span class="text-2xl font-black tracking-wider text-white font-orbitron bg-gradient-to-r from-accent-yellow to-accent-green bg-clip-text text-transparent">
-                        NAD<span class="text-accent-yellow">EE</span>M GAMING
+                    <span class="text-2xl font-black tracking-wider text-white font-orbitron bg-gradient-to-r from-accent-aqua to-accent-purple bg-clip-text text-transparent">
+                        NAD<span class="text-accent-aqua">EE</span>M GAMING
                     </span>
                     <div class="text-xs text-accent-blue font-bold tracking-widest uppercase mt-0.5">
                         <i class="fas fa-gamepad mr-1"></i> STUDIO
@@ -524,8 +601,8 @@
                     <span class="relative z-10 text-white flex items-center">
                         <i class="fas fa-home mr-2"></i> HOME
                     </span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-accent-pink to-accent-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="absolute inset-0 border-2 border-accent-pink rounded-xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-aqua to-accent-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-aqua rounded-xl"></div>
                 </a>
                 
                 <a href="https://nadeemgamingstudio.github.io/Contact" 
@@ -533,16 +610,8 @@
                     <span class="relative z-10 text-white flex items-center">
                         <i class="fas fa-phone-alt mr-2"></i> CONTACT
                     </span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-accent-blue to-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div class="absolute inset-0 border-2 border-accent-blue rounded-xl"></div>
-                </a>
-                
-                <!-- Back to Studio Button -->
-                <a href="https://nadeemgamingstudio.github.io" 
-                   class="relative group px-5 py-2.5 rounded-xl font-bold transition-all duration-300 overflow-hidden bg-accent-yellow/20">
-                    <span class="relative z-10 text-white flex items-center">
-                        <i class="fas fa-arrow-left mr-2"></i> BACK TO STUDIO
-                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-accent-purple to-accent-pink opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 border-2 border-accent-purple rounded-xl"></div>
                 </a>
             </div>
         </nav>
@@ -554,29 +623,29 @@
         <!-- Game Hero Section -->
         <section class="mb-16" data-aos="fade-up" data-aos-duration="1200">
             <div class="relative bg-gradient-to-br from-gray-900 to-black p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-800 overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-yellow via-accent-green to-accent-blue"></div>
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent-aqua via-accent-purple to-accent-pink"></div>
                 
                 <div class="flex flex-col lg:flex-row items-center gap-10">
                     <!-- Game Icon and Title -->
                     <div class="text-center lg:text-left lg:w-2/5">
                         <div class="relative mb-8 mx-auto lg:mx-0" style="max-width: 200px;">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/icon.png" 
-                                 alt="Guess SpelloPic Icon" 
-                                 class="w-full rounded-3xl border-4 border-accent-yellow shadow-2xl shadow-accent-yellow/50 animate-float"
-                                 onerror="this.src='https://placehold.co/200x200/1a1a1a/fbd534?text=SPELLOPIC'">
-                            <div class="absolute -top-3 -right-3 w-12 h-12 bg-accent-pink rounded-full flex items-center justify-center text-white animate-bounce-slow">
-                                <i class="fas fa-graduation-cap"></i>
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/icon.png" 
+                                 alt="Water Sort Puzzle Icon" 
+                                 class="w-full rounded-3xl border-4 border-accent-aqua shadow-2xl shadow-accent-aqua/50 animate-float"
+                                 onerror="this.src='https://placehold.co/200x200/1a1a1a/00ffff?text=WATER+SORT'">
+                            <div class="absolute -top-3 -right-3 w-12 h-12 bg-accent-purple rounded-full flex items-center justify-center text-white animate-bounce-slow">
+                                <i class="fas fa-water"></i>
                             </div>
                         </div>
                         
-                        <h1 class="text-4xl md:text-5xl font-black mb-4 font-orbitron">
-                            <span class="bg-gradient-to-r from-accent-yellow via-accent-green to-accent-blue bg-clip-text text-transparent">
-                                GUESS SPELLOPIC
+                        <h1 class="text-4xl md:text-5xl font-black mb-4 font-puzzle">
+                            <span class="bg-gradient-to-r from-accent-aqua via-accent-blue to-accent-purple bg-clip-text text-transparent">
+                                WATER SORT PUZZLE
                             </span>
                         </h1>
                         
-                        <p class="text-xl text-accent-pink italic mb-6 animate-pulse font-comic">
-                            "Learn spellings by guessing words from real-life pictures! A fun A–Z word game."
+                        <p class="text-xl text-accent-aqua italic mb-6 animate-pulse">
+                            <i class="fas fa-brain mr-2"></i> Color Water Sort - Puzzle Game | Relaxing Brain Logic Sorting Challenge
                         </p>
                         
                         <!-- Rating -->
@@ -588,20 +657,24 @@
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star-half-alt"></i>
                             </div>
-                            <span class="ml-3 text-gray-300">4.8/5</span>
+                            <span class="ml-3 text-gray-300">4.6/5</span>
                         </div>
                         
-                        <!-- Alphabet Preview -->
+                        <!-- Game Stats -->
                         <div class="mb-6">
-                            <p class="text-gray-400 mb-3">A-Z Alphabet Learning:</p>
-                            <div class="flex flex-wrap justify-center lg:justify-start">
-                                <span class="alphabet-letter" style="--i: 0">A</span>
-                                <span class="alphabet-letter" style="--i: 1">B</span>
-                                <span class="alphabet-letter" style="--i: 2">C</span>
-                                <span class="alphabet-letter" style="--i: 3">D</span>
-                                <span class="alphabet-letter" style="--i: 4">E</span>
-                                <span class="alphabet-letter" style="--i: 5">...</span>
-                                <span class="alphabet-letter" style="--i: 6">Z</span>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-3 bg-gray-800/50 rounded-2xl border border-gray-700">
+                                    <div class="text-2xl font-bold text-accent-aqua mb-1">
+                                        <i class="fas fa-layer-group"></i> 1000+
+                                    </div>
+                                    <div class="text-sm text-gray-300">Challenging Levels</div>
+                                </div>
+                                <div class="text-center p-3 bg-gray-800/50 rounded-2xl border border-gray-700">
+                                    <div class="text-2xl font-bold text-accent-pink mb-1">
+                                        <i class="fas fa-tint"></i> 10+
+                                    </div>
+                                    <div class="text-sm text-gray-300">Color Variations</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -609,22 +682,22 @@
                     <!-- Feature Graphic and Download -->
                     <div class="lg:w-3/5">
                         <div class="trailer-container mb-8">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/Feature.png" 
-                                 alt="Guess SpelloPic Feature Graphic" 
-                                 class="w-full rounded-2xl"
-                                 onerror="this.src='https://placehold.co/1024x500/1a1a1a/fbd534?text=GUESS+SPELLOPIC'">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/Feature.png" 
+                                 alt="Water Sort Puzzle Feature Graphic" 
+                                 class="w-full rounded-2xl border-2 border-accent-aqua"
+                                 onerror="this.src='https://placehold.co/1024x500/1a1a1a/00ffff?text=WATER+SORT+PUZZLE'">
                         </div>
                         
                         <!-- Download Button -->
                         <div class="text-center">
                             <p class="text-2xl font-bold text-white mb-6">
                                 <i class="fas fa-download text-accent-green mr-3"></i>
-                                Download Today — Make Spelling Fun Again!
+                                Download Color Water Sort - Puzzle Game now and become the ultimate puzzle master!
                             </p>
                             
-                            <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" 
+                            <a href="https://play.google.com/store/apps/details?id=com.WaterSortPuzzle2DGame" 
                                target="_blank" 
-                               class="download-btn inline-block bg-gradient-to-r from-accent-yellow to-accent-green text-gray-900 font-extrabold py-4 px-12 rounded-2xl uppercase tracking-widest text-lg shadow-2xl shadow-accent-yellow/50 hover:shadow-glow hover:scale-105 transition-all duration-300">
+                               class="download-btn inline-block bg-gradient-to-r from-accent-aqua to-accent-purple text-white font-extrabold py-4 px-12 rounded-2xl uppercase tracking-widest text-lg shadow-2xl shadow-accent-aqua/50 hover:shadow-water-glow hover:scale-105 transition-all duration-300">
                                 <span class="flex items-center justify-center">
                                     <i class="fab fa-google-play text-2xl mr-3"></i>
                                     GET IT ON GOOGLE PLAY
@@ -640,8 +713,8 @@
         <section class="mb-20" data-aos="fade-up" data-aos-delay="200">
             <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800">
                 <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
-                    <i class="fas fa-images text-accent-yellow mr-4"></i>
-                    <span class="bg-gradient-to-r from-accent-yellow to-accent-green bg-clip-text text-transparent">
+                    <i class="fas fa-images text-accent-aqua mr-4"></i>
+                    <span class="bg-gradient-to-r from-accent-aqua to-accent-blue bg-clip-text text-transparent">
                         Game Screenshots
                     </span>
                 </h2>
@@ -649,104 +722,65 @@
                 <div class="screenshot-gallery pb-6">
                     <!-- Screenshot 1 -->
                     <div class="screenshot-item" data-index="0">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-yellow transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/1.png" 
+                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-aqua transition duration-300">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/1.png" 
                                  alt="Game Screenshot 1" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/fbd534?text=Screenshot+1'">
+                                 class="w-full h-96 object-cover"
+                                 onerror="this.src='https://placehold.co/987x1902/1a1a1a/00ffff?text=Level+1'">
                             <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Picture Word Puzzle!</p>
+                                <p class="text-center text-sm text-gray-300">Color Sorting Puzzle</p>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Screenshot 2 -->
                     <div class="screenshot-item" data-index="1">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-green transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/2.png" 
+                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-blue transition duration-300">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/2.png" 
                                  alt="Game Screenshot 2" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/10b981?text=Screenshot+2'">
+                                 class="w-full h-96 object-cover"
+                                 onerror="this.src='https://placehold.co/987x1902/1a1a1a/3498db?text=Level+2'">
                             <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Learn with Real Images!</p>
+                                <p class="text-center text-sm text-gray-300">Brain Teaser Challenge</p>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Screenshot 3 -->
                     <div class="screenshot-item" data-index="2">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-blue transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/3.png" 
+                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-purple transition duration-300">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/3.png" 
                                  alt="Game Screenshot 3" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/00d4ff?text=Screenshot+3'">
+                                 class="w-full h-96 object-cover"
+                                 onerror="this.src='https://placehold.co/987x1902/1a1a1a/9d4edd?text=Level+3'">
                             <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Fun Spelling Challenges!</p>
+                                <p class="text-center text-sm text-gray-300">Logic Puzzle Game</p>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Screenshot 4 -->
                     <div class="screenshot-item" data-index="3">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-purple transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/4.png" 
+                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-pink transition duration-300">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/4.png" 
                                  alt="Game Screenshot 4" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/9d4edd?text=Screenshot+4'">
+                                 class="w-full h-96 object-cover"
+                                 onerror="this.src='https://placehold.co/987x1902/1a1a1a/ff0066?text=Level+4'">
                             <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Multiple Categories!</p>
+                                <p class="text-center text-sm text-gray-300">Color Matching Fun</p>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Screenshot 5 -->
                     <div class="screenshot-item" data-index="4">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-pink transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/5.png" 
-                                 alt="Game Screenshot 5" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/ff0066?text=Screenshot+5'">
-                            <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">A-Z Alphabet Levels!</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Screenshot 6 -->
-                    <div class="screenshot-item" data-index="5">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-yellow transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/6.png" 
-                                 alt="Game Screenshot 6" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/fbd534?text=Screenshot+6'">
-                            <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Educational & Fun!</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Screenshot 7 -->
-                    <div class="screenshot-item" data-index="6">
                         <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-green transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/7.png" 
-                                 alt="Game Screenshot 7" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/10b981?text=Screenshot+7'">
+                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/5.png" 
+                                 alt="Game Screenshot 5" 
+                                 class="w-full h-96 object-cover"
+                                 onerror="this.src='https://placehold.co/987x1902/1a1a1a/2ecc71?text=Level+5'">
                             <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Perfect for Kids!</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Screenshot 8 -->
-                    <div class="screenshot-item" data-index="7">
-                        <div class="bg-gray-800 rounded-2xl overflow-hidden border-2 border-gray-700 hover:border-accent-blue transition duration-300">
-                            <img src="https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/8.png" 
-                                 alt="Game Screenshot 8" 
-                                 class="w-full h-64 object-cover"
-                                 onerror="this.src='https://placehold.co/300x500/1a1a1a/00d4ff?text=Screenshot+8'">
-                            <div class="p-4 bg-gray-900">
-                                <p class="text-center text-sm text-gray-300">Boost Vocabulary!</p>
+                                <p class="text-center text-sm text-gray-300">Relaxing Puzzle Experience</p>
                             </div>
                         </div>
                     </div>
@@ -754,280 +788,312 @@
                 
                 <div class="text-center mt-6">
                     <p class="text-gray-400 text-sm">
-                        <i class="fas fa-mouse-pointer text-accent-yellow mr-2"></i>
+                        <i class="fas fa-mouse-pointer text-accent-aqua mr-2"></i>
                         Click on any screenshot to view in full screen
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Game Description and Features -->
+        <!-- Game Description and How to Play -->
         <section class="mb-20">
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Game Description -->
                 <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-right" data-aos-duration="1000">
                     <h3 class="text-3xl font-bold text-white mb-6 flex items-center">
-                        <i class="fas fa-puzzle-piece text-accent-yellow mr-4"></i>
-                        <span class="bg-gradient-to-r from-accent-yellow to-accent-green bg-clip-text text-transparent">
-                            The Picture Word Puzzle
+                        <i class="fas fa-water text-accent-aqua mr-4"></i>
+                        <span class="bg-gradient-to-r from-accent-aqua to-accent-blue bg-clip-text text-transparent">
+                            Water Sort Puzzle - Color Game
                         </span>
                     </h3>
                     
                     <p class="text-gray-300 mb-6 text-lg leading-relaxed">
-                        <strong>Looking for a fun and educational word game?</strong> Guess SpelloPic is the perfect choice for children and learners of all ages! Learn new words, improve spelling, and boost memory — all by identifying real-life pictures!
+                        💧 <strong>Welcome to Color Water Sort - Puzzle Game, the ultimate relaxing and brain-training challenge!</strong>
                     </p>
                     
-                    <p class="text-gray-300 mb-8 text-lg leading-relaxed">
-                        With 26 unique levels (A-Z), hundreds of real-life images, and multiple categories, this game makes learning spellings an exciting adventure for kids!
+                    <p class="text-gray-300 mb-6 text-lg leading-relaxed">
+                        If you enjoy logic puzzles, brain teasers and relaxing gameplay, this water sorting game is just for you.
                     </p>
                     
-                    <!-- Game Stats -->
-                    <div class="grid grid-cols-2 gap-6 mt-8">
-                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
-                            <div class="text-3xl font-bold text-accent-yellow mb-2">
-                                26
-                            </div>
-                            <div class="text-sm text-gray-300">A-Z Levels</div>
-                        </div>
-                        <div class="text-center p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
-                            <div class="text-3xl font-bold text-accent-green mb-2">
-                                240+
-                            </div>
-                            <div class="text-sm text-gray-300">Real Images</div>
-                        </div>
+                    <div class="mt-8 p-6 bg-gray-800/50 rounded-2xl border border-accent-aqua/30">
+                        <h4 class="text-xl font-bold text-white mb-4 flex items-center">
+                            <i class="fas fa-brain text-accent-purple mr-3"></i>
+                            Brain Training Benefits
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Improves logical thinking and problem-solving skills</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Enhances focus and concentration</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Reduces stress with relaxing gameplay</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-accent-green mr-2 mt-1"></i>
+                                <span class="text-gray-300">Boosts memory and cognitive function</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 
-                <!-- Game Features -->
+                <!-- How to Play -->
                 <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl shadow-2xl border border-gray-800" data-aos="fade-left" data-aos-duration="1000">
                     <h3 class="text-3xl font-bold text-white mb-6 flex items-center">
-                        <i class="fas fa-star text-accent-green mr-4"></i>
-                        <span class="bg-gradient-to-r from-accent-green to-accent-blue bg-clip-text text-transparent">
-                            Key Features
+                        <i class="fas fa-gamepad text-accent-purple mr-4"></i>
+                        <span class="bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">
+                            How to Play
                         </span>
                     </h3>
                     
-                    <div class="space-y-5">
+                    <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-accent-yellow/20 flex items-center justify-center text-accent-yellow mr-4">
-                                <i class="fas fa-images"></i>
+                            <div class="w-10 h-10 rounded-full bg-accent-aqua/20 flex items-center justify-center text-accent-aqua mr-4">
+                                <i class="fas fa-hand-pointer"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Real-Life Images</h4>
-                                <p class="text-gray-400">High-quality real pictures for better learning and recognition.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-full bg-accent-green/20 flex items-center justify-center text-accent-green mr-4">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-1">A-Z Learning</h4>
-                                <p class="text-gray-400">26 levels dedicated to each alphabet letter for systematic learning.</p>
+                                <h4 class="text-lg font-bold text-white mb-1">Tap Any Tube</h4>
+                                <p class="text-gray-400">Tap any tube to pour water into another tube.</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="w-10 h-10 rounded-full bg-accent-blue/20 flex items-center justify-center text-accent-blue mr-4">
-                                <i class="fas fa-brain"></i>
+                                <i class="fas fa-fill-drip"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Brain Development</h4>
-                                <p class="text-gray-400">Boosts vocabulary, spelling & memory effectively.</p>
+                                <h4 class="text-lg font-bold text-white mb-1">Match Colors</h4>
+                                <p class="text-gray-400">You can only pour water of the same color together.</p>
                             </div>
                         </div>
                         
                         <div class="flex items-start">
                             <div class="w-10 h-10 rounded-full bg-accent-purple/20 flex items-center justify-center text-accent-purple mr-4">
-                                <i class="fas fa-child"></i>
+                                <i class="fas fa-sort-amount-up"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Kid-Friendly</h4>
-                                <p class="text-gray-400">Completely safe design for preschoolers and early learners.</p>
+                                <h4 class="text-lg font-bold text-white mb-1">Sort All Colors</h4>
+                                <p class="text-gray-400">Use your logic to sort all the colors until each tube has only one color.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full bg-accent-pink/20 flex items-center justify-center text-accent-pink mr-4">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-1">Use Hints</h4>
+                                <p class="text-gray-400">Restart or use hints whenever you get stuck.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mt-8 p-4 bg-gray-800/50 rounded-2xl border border-gray-700">
+                    <div class="mt-8 p-4 bg-gray-800/50 rounded-2xl border border-accent-purple/30">
                         <p class="text-gray-300 text-sm">
-                            <i class="fas fa-check-circle text-green-400 mr-2"></i>
-                            <span class="font-semibold">Works offline</span> and optimized for all screen sizes. No time limits!
+                            <i class="fas fa-info-circle text-accent-aqua mr-2"></i>
+                            <span class="font-semibold">Simple to play but hard to master!</span> Perfect for all ages.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Categories Section -->
+        <!-- Game Features Section -->
         <section class="mb-20" data-aos="fade-up">
             <div class="bg-gradient-to-br from-gray-900 to-black p-10 rounded-3xl shadow-2xl border border-gray-800">
                 <h3 class="text-3xl font-bold text-white mb-8 text-center">
-                    <span class="bg-gradient-to-r from-accent-yellow to-accent-green bg-clip-text text-transparent">
-                        Exciting Learning Categories
+                    <span class="bg-gradient-to-r from-accent-aqua to-accent-purple bg-clip-text text-transparent">
+                        Game Features
                     </span>
                 </h3>
                 
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <!-- Category 1 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-yellow transition duration-300 text-center">
-                        <div class="text-4xl mb-4">🐛</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Insects & Bugs</h4>
-                        <p class="text-gray-400">20 real-life images</p>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Feature 1 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-aqua">✅</div>
+                        <h4 class="text-xl font-bold text-white mb-3">1000+ Challenging Levels</h4>
+                        <p class="text-gray-400">Fun and challenging levels that keep you engaged for hours.</p>
                     </div>
                     
-                    <!-- Category 2 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-green transition duration-300 text-center">
-                        <div class="text-4xl mb-4">🍎</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Fruits</h4>
-                        <p class="text-gray-400">60 colorful photos</p>
+                    <!-- Feature 2 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-blue">👆</div>
+                        <h4 class="text-xl font-bold text-white mb-3">One-Finger Control</h4>
+                        <p class="text-gray-400">Play anytime, anywhere with simple one-finger controls.</p>
                     </div>
                     
-                    <!-- Category 3 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-blue transition duration-300 text-center">
-                        <div class="text-4xl mb-4">🥦</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Vegetables</h4>
-                        <p class="text-gray-400">20 fresh veggie images</p>
+                    <!-- Feature 3 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-purple">🎵</div>
+                        <h4 class="text-xl font-bold text-white mb-3">Relaxing Sound & Design</h4>
+                        <p class="text-gray-400">Soothing sound effects and colorful, calming visual design.</p>
                     </div>
                     
-                    <!-- Category 4 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-purple transition duration-300 text-center">
-                        <div class="text-4xl mb-4">👕</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Clothes</h4>
-                        <p class="text-gray-400">20 daily wear items</p>
+                    <!-- Feature 4 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-pink">⏰</div>
+                        <h4 class="text-xl font-bold text-white mb-3">No Time Limits</h4>
+                        <p class="text-gray-400">Enjoy stress-free puzzles at your own pace.</p>
                     </div>
                     
-                    <!-- Category 5 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-pink transition duration-300 text-center">
-                        <div class="text-4xl mb-4">🐘</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Animals</h4>
-                        <p class="text-gray-400">100 amazing animal images</p>
+                    <!-- Feature 5 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-green">📱</div>
+                        <h4 class="text-xl font-bold text-white mb-3">Small Size & Offline Play</h4>
+                        <p class="text-gray-400">Small app size with full offline gameplay support.</p>
                     </div>
                     
-                    <!-- Category 6 -->
-                    <div class="category-badge p-6 bg-gray-800/50 rounded-2xl border border-gray-700 hover:border-accent-yellow transition duration-300 text-center">
-                        <div class="text-4xl mb-4">🐦</div>
-                        <h4 class="text-xl font-bold text-white mb-2">Birds</h4>
-                        <p class="text-gray-400">20 feathered friends</p>
+                    <!-- Feature 6 -->
+                    <div class="feature-card p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="text-4xl mb-4 text-accent-yellow">🧠</div>
+                        <h4 class="text-xl font-bold text-white mb-3">Brain Training</h4>
+                        <p class="text-gray-400">Improves focus, memory and problem-solving skills.</p>
                     </div>
                 </div>
                 
                 <div class="mt-10 text-center">
-                    <div class="inline-block p-6 bg-gray-800/50 rounded-2xl border border-accent-green/30">
+                    <div class="inline-block p-6 bg-gradient-to-r from-accent-aqua/10 to-accent-purple/10 rounded-2xl border border-accent-aqua/30">
                         <p class="text-xl font-bold text-white mb-3">
-                            <i class="fas fa-lightbulb text-accent-yellow mr-3"></i>
-                            Learning Made Fun!
+                            <i class="fas fa-brain text-accent-aqua mr-3 animate-pulse"></i>
+                            Perfect Brain Exercise!
                         </p>
                         <p class="text-gray-300">
-                            Each category helps children learn new words while having fun with pictures!
+                            This puzzle game is designed to improve focus, memory and problem-solving skills while keeping you entertained.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How to Play Section -->
+        <!-- User Feedback Section -->
         <section class="mb-20" data-aos="fade-up">
             <div class="bg-gradient-to-br from-gray-900 to-black p-10 rounded-3xl shadow-2xl border border-gray-800">
                 <h3 class="text-3xl font-bold text-white mb-8 text-center">
-                    <span class="bg-gradient-to-r from-accent-green to-accent-blue bg-clip-text text-transparent">
-                        How to Play
+                    <span class="bg-gradient-to-r from-accent-purple to-accent-pink bg-clip-text text-transparent">
+                        What Players Say
                     </span>
                 </h3>
                 
-                <div class="grid md:grid-cols-4 gap-8">
-                    <!-- Step 1 -->
-                    <div class="text-center">
-                        <div class="relative mx-auto mb-6">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-accent-yellow to-accent-green flex items-center justify-center text-3xl text-white font-bold">
-                                1
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Feedback 1 -->
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
-                            <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-accent-blue flex items-center justify-center text-white animate-bounce-slow">
-                                <i class="fas fa-image"></i>
-                            </div>
+                            <span class="ml-3 text-gray-400 text-sm">5/5</span>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">See the Picture</h4>
-                        <p class="text-gray-400">Look at the real-life picture displayed on screen.</p>
+                        <p class="text-gray-300 italic mb-4">"Very addictive and relaxing water sort puzzle. I love the colors and smooth gameplay!"</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-aqua flex items-center justify-center text-white mr-3">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-sm text-gray-400">Puzzle Lover</span>
+                        </div>
                     </div>
                     
-                    <!-- Step 2 -->
-                    <div class="text-center">
-                        <div class="relative mx-auto mb-6">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-accent-green to-accent-blue flex items-center justify-center text-3xl text-white font-bold">
-                                2
+                    <!-- Feedback 2 -->
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
                             </div>
-                            <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-accent-purple flex items-center justify-center text-white animate-bounce-slow">
-                                <i class="fas fa-font"></i>
-                            </div>
+                            <span class="ml-3 text-gray-400 text-sm">4.5/5</span>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">Identify the Word</h4>
-                        <p class="text-gray-400">Think of the word that matches the picture.</p>
+                        <p class="text-gray-300 italic mb-4">"Perfect game to relax after work. Simple but super engaging. Challenging levels but not too hard."</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-blue flex items-center justify-center text-white mr-3">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-sm text-gray-400">Relaxation Seeker</span>
+                        </div>
                     </div>
                     
-                    <!-- Step 3 -->
-                    <div class="text-center">
-                        <div class="relative mx-auto mb-6">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple flex items-center justify-center text-3xl text-white font-bold">
-                                3
+                    <!-- Feedback 3 -->
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
-                            <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-accent-yellow flex items-center justify-center text-white animate-bounce-slow">
-                                <i class="fas fa-keyboard"></i>
-                            </div>
+                            <span class="ml-3 text-gray-400 text-sm">5/5</span>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">Arrange Letters</h4>
-                        <p class="text-gray-400">Use the letter blocks to spell the word correctly.</p>
+                        <p class="text-gray-300 italic mb-4">"This puzzle game is so satisfying. The sound effects are calming too. Keeps my brain sharp!"</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-purple flex items-center justify-center text-white mr-3">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-sm text-gray-400">Brain Trainer</span>
+                        </div>
                     </div>
                     
-                    <!-- Step 4 -->
-                    <div class="text-center">
-                        <div class="relative mx-auto mb-6">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-r from-accent-purple to-accent-pink flex items-center justify-center text-3xl text-white font-bold">
-                                4
+                    <!-- Feedback 4 -->
+                    <div class="p-6 bg-gray-800/50 rounded-2xl border border-gray-700">
+                        <div class="flex items-center mb-4">
+                            <div class="rating-stars text-sm">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
                             </div>
-                            <div class="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-accent-green flex items-center justify-center text-white animate-bounce-slow">
-                                <i class="fas fa-trophy"></i>
-                            </div>
+                            <span class="ml-3 text-gray-400 text-sm">5/5</span>
                         </div>
-                        <h4 class="text-xl font-bold text-white mb-3">Learn & Progress</h4>
-                        <p class="text-gray-400">Move to next level and expand your vocabulary!</p>
+                        <p class="text-gray-300 italic mb-4">"Love the graphics and colorful water tubes. So aesthetic! Best water sort puzzle I've tried."</p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-accent-pink flex items-center justify-center text-white mr-3">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <span class="text-sm text-gray-400">Visual Artist</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="mt-12 text-center">
-                    <div class="inline-block p-6 bg-gray-800/50 rounded-2xl border border-accent-yellow/30">
-                        <p class="text-xl font-bold text-white mb-3">
-                            <i class="fas fa-graduation-cap text-accent-green mr-3"></i>
-                            Perfect for Kids!
-                        </p>
-                        <p class="text-gray-300">
-                            No time limits — kids can learn at their own comfortable pace. Great for preschoolers!
-                        </p>
-                    </div>
+                <div class="mt-8 text-center">
+                    <p class="text-gray-400">
+                        <i class="fas fa-comment text-accent-aqua mr-2"></i>
+                        Based on 10,000+ positive reviews on Google Play
+                    </p>
                 </div>
             </div>
         </section>
 
         <!-- Download CTA Section -->
         <section class="text-center" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="bg-gradient-to-r from-accent-yellow/10 to-accent-green/10 p-10 rounded-3xl border-2 border-dashed border-accent-yellow/50">
+            <div class="bg-gradient-to-r from-accent-aqua/10 to-accent-purple/10 p-10 rounded-3xl border-2 border-dashed border-accent-aqua/50">
                 <h3 class="text-4xl font-bold text-white mb-6">
-                    Make Learning Fun with SpelloPic!
+                    Start Your Brain Training Journey Today!
                 </h3>
                 <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Download Guess SpelloPic today and help your child learn spellings through fun picture puzzles!
+                    Whether you're at home, on a break or traveling, Water Sort Puzzle is the perfect way to relax your mind and sharpen your brain!
                 </p>
                 
                 <div class="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-                    <a href="https://play.google.com/store/apps/details?id=com.guessspellopic" 
+                    <a href="https://play.google.com/store/apps/details?id=com.WaterSortPuzzle2DGame" 
                        target="_blank" 
-                       class="download-btn bg-gradient-to-r from-accent-yellow to-accent-green text-gray-900 font-extrabold py-4 px-10 rounded-2xl uppercase tracking-widest text-lg shadow-2xl shadow-accent-yellow/50 hover:shadow-glow hover:scale-105 transition-all duration-300">
+                       class="download-btn bg-gradient-to-r from-accent-aqua to-accent-purple text-white font-extrabold py-4 px-10 rounded-2xl uppercase tracking-widest text-lg shadow-2xl shadow-accent-aqua/50 hover:shadow-water-glow hover:scale-105 transition-all duration-300">
                         <span class="flex items-center justify-center">
                             <i class="fab fa-google-play text-2xl mr-3"></i>
                             Download on Google Play
                         </span>
                     </a>
                     
-                    <a href="https://nadeemgamingstudio.github.io/guesspicspelling/privacypolicy" 
+                    <a href="https://nadeemgamingstudio.github.io/watersortpuzzle/privacypolicy" 
                        target="_blank"
                        class="bg-gray-800 text-white font-bold py-4 px-10 rounded-2xl uppercase tracking-widest text-lg border-2 border-gray-700 hover:border-accent-blue hover:shadow-neon-blue transition-all duration-300">
                         <span class="flex items-center justify-center">
@@ -1039,8 +1105,8 @@
                 
                 <div class="text-gray-400 text-sm">
                     <p class="mb-2">
-                        <i class="fas fa-info-circle text-accent-yellow mr-2"></i>
-                        Guess SpelloPic is free to play and works completely offline.
+                        <i class="fas fa-info-circle text-accent-aqua mr-2"></i>
+                        Water Sort Puzzle is completely free to play with optional hints available.
                     </p>
                     <p>
                         <i class="fas fa-heart text-accent-pink mr-2"></i>
@@ -1054,7 +1120,7 @@
                         ⭐⭐⭐⭐⭐
                     </div>
                     <p class="text-gray-400 italic">
-                        Rated 4.8/5 by parents and teachers
+                        Rated 4.6/5 by puzzle enthusiasts worldwide
                     </p>
                 </div>
             </div>
@@ -1063,34 +1129,34 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-secondary-bg border-t-2 border-accent-yellow/30 py-10 mt-20">
+    <footer class="bg-secondary-bg border-t-2 border-accent-aqua/30 py-10 mt-20">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid md:grid-cols-3 gap-10 mb-10">
                 <div>
                     <div class="flex items-center space-x-3 mb-6">
-                        <img src="nadeemgamingstudio.ico" alt="Nadeem Studio Logo" class="h-10 w-10 rounded-xl">
+                        <img src="https://nadeemgamingstudio.github.io/nadeemgamingstudio.ico" alt="Nadeem Studio Logo" class="h-10 w-10 rounded-xl">
                         <span class="text-xl font-black tracking-wider text-white font-orbitron">NADEEM GAMING</span>
                     </div>
                     <p class="text-gray-400">
-                        Creating fun, engaging and educational gaming experiences for children worldwide.
+                        Creating relaxing, brain-training puzzle games that entertain and challenge players of all ages.
                     </p>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-green pl-3">Quick Links</h4>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-aqua pl-3">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="https://nadeemgamingstudio.github.io" class="text-gray-400 hover:text-accent-pink transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
-                        <li><a href="https://nadeemgamingstudio.github.io/Contact" class="text-gray-400 hover:text-accent-yellow transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact</a></li>
-                        <li><a href="https://nadeemgamingstudio.github.io/guesspicspelling/privacypolicy" class="text-gray-400 hover:text-accent-green transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Privacy Policy</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io" class="text-gray-400 hover:text-accent-aqua transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Home</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/Contact" class="text-gray-400 hover:text-accent-blue transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Contact</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/watersortpuzzle/privacypolicy" class="text-gray-400 hover:text-accent-green transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-yellow pl-3">More Games</h4>
+                    <h4 class="text-lg font-bold text-white mb-6 border-l-4 border-accent-purple pl-3">More Games</h4>
                     <ul class="space-y-3">
                         <li><a href="https://nadeemgamingstudio.github.io/catvsmouserain" class="text-gray-400 hover:text-accent-yellow transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Cat vs Mouse Rain</a></li>
-                        <li><a href="https://nadeemgamingstudio.github.io/guessspellopic" class="text-gray-400 hover:text-accent-green transition duration-300"><i class="fas fa-chevron-right text-xs mr-2 text-accent-green"></i> Guess SpelloPic</a></li>
-                        <li><a href="https://nadeemgamingstudio.github.io/12TestersTestersCommunity" class="text-gray-400 hover:text-accent-purple transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> 12 Testers Community</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/guessspellopic" class="text-gray-400 hover:text-accent-green transition duration-300"><i class="fas fa-chevron-right text-xs mr-2"></i> Guess SpelloPic</a></li>
+                        <li><a href="https://nadeemgamingstudio.github.io/watersortpuzzle" class="text-gray-400 hover:text-accent-aqua transition duration-300"><i class="fas fa-chevron-right text-xs mr-2 text-accent-aqua"></i> Water Sort Puzzle</a></li>
                     </ul>
                 </div>
             </div>
@@ -1098,10 +1164,10 @@
             <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="mb-4 md:mb-0">
-                        &copy; 2025 <span class="text-accent-yellow font-bold">Nadeem Gaming Studio</span>. All Rights Reserved.
+                        &copy; 2025 <span class="text-accent-aqua font-bold">Nadeem Gaming Studio</span>. All Rights Reserved.
                     </div>
                     <div>
-                        <span class="text-accent-green font-bold">Guess SpelloPic</span> - Educational Fun for Kids!
+                        <span class="text-accent-purple font-bold">Water Sort Puzzle - Color Game</span> - Relaxing Brain Logic Challenge!
                     </div>
                 </div>
             </div>
@@ -1136,74 +1202,84 @@
                 });
             });
             
-            // Letter Animation
-            const letterContainer = document.getElementById('letterAnimation');
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            // Bubble Animation
+            const bubbleContainer = document.getElementById('bubbleAnimation');
             
-            function createLetterAnimation() {
-                if (letterContainer.children.length > 15) return;
+            function createBubbleAnimation() {
+                if (bubbleContainer.children.length > 15) return;
                 
-                const letter = document.createElement('div');
-                letter.className = 'letter-animation';
-                letter.innerHTML = alphabet[Math.floor(Math.random() * alphabet.length)];
-                letter.style.left = Math.random() * 100 + 'vw';
-                letter.style.top = Math.random() * 100 + 'vh';
-                letter.style.opacity = Math.random() * 0.5 + 0.3;
-                letter.style.fontSize = (Math.random() * 20 + 15) + 'px';
-                letter.style.animation = `letter-float ${Math.random() * 5 + 5}s ease-in-out infinite`;
-                letter.style.animationDelay = Math.random() * 2 + 's';
+                const bubble = document.createElement('div');
+                bubble.className = 'water-bubble';
+                const size = Math.random() * 40 + 10;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * 100 + 'vw';
+                bubble.style.opacity = Math.random() * 0.5 + 0.2;
                 
-                letterContainer.appendChild(letter);
+                // Random bubble color
+                const colors = ['#00FFFF', '#3498db', '#9D4EDD', '#FF0066', '#2ECC71'];
+                bubble.style.background = `radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), ${colors[Math.floor(Math.random() * colors.length)]}40)`;
                 
-                // Remove letter after animation completes
+                bubble.style.animation = `bubble-float ${Math.random() * 20 + 10}s linear infinite`;
+                bubble.style.animationDelay = Math.random() * 5 + 's';
+                
+                bubbleContainer.appendChild(bubble);
+                
+                // Remove bubble after animation completes
                 setTimeout(() => {
-                    if (letter.parentNode) {
-                        letter.remove();
+                    if (bubble.parentNode) {
+                        bubble.remove();
                     }
-                }, 10000);
+                }, 30000);
             }
             
-            // Create initial letters
+            // Create initial bubbles
             for (let i = 0; i < 8; i++) {
-                setTimeout(createLetterAnimation, i * 300);
+                setTimeout(createBubbleAnimation, i * 500);
             }
             
-            // Continue letter animation
-            setInterval(createLetterAnimation, 1500);
+            // Continue bubble animation
+            setInterval(createBubbleAnimation, 3000);
             
-            // Puzzle Pieces Animation
-            const puzzleContainer = document.getElementById('puzzleAnimation');
-            const puzzleEmojis = ['🧩', '🔤', '📚', '🎓', '🌟', '✨', '🎯', '🏆'];
+            // Color Drop Animation
+            const dropContainer = document.getElementById('dropAnimation');
+            const dropColors = ['#00FFFF', '#3498db', '#9D4EDD', '#FF0066', '#FBD534', '#2ECC71'];
             
-            function createPuzzleAnimation() {
-                if (puzzleContainer.children.length > 10) return;
+            function createDropAnimation() {
+                if (dropContainer.children.length > 10) return;
                 
-                const puzzle = document.createElement('div');
-                puzzle.className = 'puzzle-piece';
-                puzzle.innerHTML = puzzleEmojis[Math.floor(Math.random() * puzzleEmojis.length)];
-                puzzle.style.left = Math.random() * 100 + 'vw';
-                puzzle.style.top = Math.random() * 100 + 'vh';
-                puzzle.style.opacity = Math.random() * 0.2 + 0.1;
-                puzzle.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                puzzle.style.animation = `puzzle-spin ${Math.random() * 20 + 20}s linear infinite`;
-                puzzle.style.animationDelay = Math.random() * 5 + 's';
+                const drop = document.createElement('div');
+                drop.className = 'color-drop';
+                drop.style.left = Math.random() * 100 + 'vw';
+                drop.style.opacity = Math.random() * 0.6 + 0.3;
+                drop.style.background = dropColors[Math.floor(Math.random() * dropColors.length)];
+                drop.style.boxShadow = `0 0 15px ${drop.style.background}`;
+                drop.style.animation = `drop-fall ${Math.random() * 3 + 2}s linear infinite`;
+                drop.style.animationDelay = Math.random() * 2 + 's';
                 
-                puzzleContainer.appendChild(puzzle);
+                dropContainer.appendChild(drop);
+                
+                // Remove drop after animation completes
+                setTimeout(() => {
+                    if (drop.parentNode) {
+                        drop.remove();
+                    }
+                }, 5000);
             }
             
-            // Create initial puzzle pieces
+            // Create initial drops
             for (let i = 0; i < 5; i++) {
-                setTimeout(createPuzzleAnimation, i * 500);
+                setTimeout(createDropAnimation, i * 800);
             }
             
-            // Continue puzzle animation
-            setInterval(createPuzzleAnimation, 2000);
+            // Continue drop animation
+            setInterval(createDropAnimation, 2000);
             
             // Simple Particle Effect
             const particlesContainer = document.querySelector('.particles');
-            const colors = ['#FBD534', '#10B981', '#00D4FF', '#9D4EDD'];
+            const colors = ['#00FFFF', '#3498db', '#9D4EDD', '#FF0066'];
             
-            for (let i = 0; i = 40; i++) {
+            for (let i = 0; i < 25; i++) {
                 const particle = document.createElement('div');
                 particle.style.position = 'absolute';
                 particle.style.width = Math.random() * 5 + 2 + 'px';
@@ -1232,14 +1308,11 @@
             
             let currentScreenshotIndex = 0;
             const screenshotUrls = [
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/1.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/2.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/3.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/4.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/5.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/6.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/7.png',
-                'https://raw.githubusercontent.com/nadeemgamingstudio/guesspicspelling/refs/heads/main/8.png'
+                'https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/1.png',
+                'https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/2.png',
+                'https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/3.png',
+                'https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/4.png',
+                'https://raw.githubusercontent.com/nadeemgamingstudio/watersortpuzzle/refs/heads/main/5.png'
             ];
             
             // Open modal when screenshot is clicked
@@ -1296,7 +1369,7 @@
                 btn.addEventListener('click', function() {
                     // Add temporary animation
                     const originalText = this.innerHTML;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Downloading...';
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Redirecting...';
                     this.style.pointerEvents = 'none';
                     
                     // Reset after 2 seconds
@@ -1307,10 +1380,21 @@
                 });
             });
             
-            // Animate alphabet letters
-            const alphabetLetters = document.querySelectorAll('.alphabet-letter');
-            alphabetLetters.forEach((letter, index) => {
-                letter.style.setProperty('--i', index);
+            // Animate water tubes on page
+            const waterTubes = document.querySelectorAll('.water-tube');
+            waterTubes.forEach((tube, index) => {
+                tube.style.animationDelay = (index * 0.5) + 's';
+            });
+            
+            // Add water sound effect on click of water icon
+            const waterIcons = document.querySelectorAll('.fa-water, .fa-tint');
+            waterIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    this.style.animation = 'color-change 2s';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 2000);
+                });
             });
         });
     </script>
